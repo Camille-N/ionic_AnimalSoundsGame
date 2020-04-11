@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Animal Game
+    </ion-title>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="cheatMode= ! cheatMode">
+        <ion-icon name="baseball" slot="icon-only" [color]="cheatMode? 'danger' : 'medium'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+
+    <ion-item *ngFor="let animal of animals" (click)="guessAnimal(animal.title)">
+
+      <ion-avatar slot="start">
+        <ion-img src="/assets/{{animal.image}}"></ion-img>
+      </ion-avatar>
+
+      <ion-icon name="musical-notes" slot="end" color="medium" *ngIf="animal.playing"></ion-icon>
+
+      <ion-label>
+        <h3>{{animal.title}}</h3>
+        <p>{{animal.desc}}</p>
+      </ion-label>
+
+
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="full" (click)="playSound()" [color]="animalIndex==null? 'success' : 'danger' ">JOUER</ion-button>
+  </ion-toolbar>
+</ion-footer>
